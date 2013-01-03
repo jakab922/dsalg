@@ -1,0 +1,8 @@
+RB rules:
+
+1. All nodes are either black or red.
+2. The root is black.
+3. Leaves are black
+4. Both children of a red node is black.
+5. Given a node A and 2 of it's descendant leaves B,C the number
+   of black nodes on path A->B and A->C are the same.
