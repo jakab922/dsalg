@@ -44,13 +44,17 @@ class Nil(object):
 
 class RBTree(object):
 
-  def __new__(cls, compare_func=None):
+  def __new__(cls, compare_func=None, value_pref_func=None):
     """If compare_func is not None this function
        replaces the compare function with it"""
     pass
 
-  def __compare(key1, key2):
+  def __compare(self, key1, key2):
     """Compares 2 keys"""
+    pass
+
+  def __value_pref(self, key1, value1, key2, value2, op_type):
+    """Used in conjunction with the &, | and ^ operators"""
     pass
 
   def __init__(self):
@@ -144,4 +148,13 @@ class RBTree(object):
 - When iterators are created we should use a semaphore
   so that we can't modify(insert/delete) the tree while
   there are iterators on it.
+- Somehow we should make the balancing part and everything else
+  as independent as possible.
+- In a tree keys can be from different classes until a compare
+  function is supported for __new__ which can handle this. Although
+  any class that is a key(k) must not drop type error hash(k). Keys
+  are stored as <class_name>.<hash> so if different types have the 
+  same hash we can still tell the difference. Node should have
+  this hashed key and the real key. Maybe this part is an overshot.
+  Can't really think of a usecase for this.
 """
